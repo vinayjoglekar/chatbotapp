@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:padding="16dp"
+              android:background="#E5E7E9">
+
+    <ImageView
+            android:id="@+id/imgChat"
+            android:layout_width="80dp"
+            android:layout_height="100dp"
+            android:layout_marginTop="50dp"
+            android:layout_gravity="center"
+            app:srcCompat="@drawable/ic_chat"/>
+
+    <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/txtInputUserName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Email ID"
+            app:errorEnabled="true"
+            android:textColorHint="#000000"
+            app:hintEnabled="true"
+            android:layout_marginTop="24dp"
+            style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.Dense">
+
+        <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edtUserName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPersonName"
+                android:maxLines="1"
+                android:textSize="14sp"
+                android:textColor="#000000"
+                android:fontFamily="@font/open_sans"
+                android:drawablePadding="8dp"
+                android:imeOptions="actionNext"/>
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/txtInputNickName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Nick name"
+            android:textColorHint="#000000"
+            app:errorEnabled="true"
+            app:hintEnabled="true"
+            style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.Dense">
+
+        <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edtNickName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="phone"
+                android:maxLines="1"
+                android:textSize="14sp"
+                android:textColor="#000000"
+                android:fontFamily="@font/open_sans"
+                android:drawablePadding="8dp"
+                android:imeOptions="actionNext"/>
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/txtInputPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Password"
+            app:errorEnabled="true"
+            app:hintEnabled="true"
+            android:textColorHint="#000000"
+            app:passwordToggleEnabled="true"
+            style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.Dense">
+
+        <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edtPassword"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPassword"
+                android:maxLines="1"
+                android:textColor="#000000"
+                android:textSize="14sp"
+                android:fontFamily="@font/open_sans"
+                android:drawablePadding="8dp"
+                android:imeOptions="actionDone"/>
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <Button
+            android:id="@+id/btnSignUp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Sign Up"
+            android:textSize="16sp"
+            app:cornerRadius="30dp"
+            android:paddingStart="30dp"
+            android:textColor="#FFFFFF"
+            android:paddingEnd="30dp"
+            android:background="#5DADE2"
+            android:fontFamily="@font/open_sans_bold"
+            android:layout_marginTop="16dp"
+            android:layout_gravity="center"/>
+
+    <TextView
+            android:id="@+id/lblLogin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/if_you_have_an_account_login"
+            android:padding="8dp"
+            android:textColor="#000000"
+            android:textSize="14sp"
+            android:layout_marginTop="16dp"
+            android:fontFamily="@font/open_sans"
+            android:layout_gravity="center"/>
+
+</LinearLayout>
