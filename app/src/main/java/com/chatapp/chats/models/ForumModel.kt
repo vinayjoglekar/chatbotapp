@@ -1,10 +1,40 @@
 package com.chatapp.chats.models
 
-class ForumModel {
+import androidx.databinding.BaseObservable
+import androidx.databinding.Bindable
+import com.chatapp.BR
+
+class ForumModel: BaseObservable() {
+
     var id: Int = 0
-    var forumName: String? = null
-    var createrName: String? = null
+
+    @get:Bindable
+    var forumName: String? = ""
+        set(value) {
+            field = value
+            notifyPropertyChanged(BR.forumName)
+        }
+
+    @get:Bindable
+    var createrName: String? = ""
+        set(value) {
+            field = value
+            notifyPropertyChanged(BR.createrName)
+        }
+
+    @get:Bindable
     var creationTime: Long = 0
-    var description: String? = null
-    var comments: List<MessageModel>? = null
+        set(value) {
+            field = value
+            notifyPropertyChanged(BR.creationTime)
+        }
+
+    @get:Bindable
+    var description: String? = ""
+        set(value) {
+            field = value
+            notifyPropertyChanged(BR.description)
+        }
+
+    var comments: List<CommentModel>? = null
 }

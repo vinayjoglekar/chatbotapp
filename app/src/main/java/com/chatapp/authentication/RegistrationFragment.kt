@@ -18,7 +18,6 @@ import kotlinx.android.synthetic.main.sign_up_layout.*
 class RegistrationFragment : Fragment() {
 
     lateinit var viewModel: AuthenticationViewModel
-    // Access a Cloud Firestore instance from your Activity
     val db = FirebaseFirestore.getInstance()
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
@@ -52,7 +51,6 @@ class RegistrationFragment : Fragment() {
                 .addOnCompleteListener(activity!!) { task ->
                     if (task.isSuccessful) {
                         // Sign in success, update UI with the signed-in user's information
-                        Log.d("RegistrationFragment", "signUpWithEmail:success")
                         val user = viewModel.auth.currentUser
                         // Create a new user with a first and last name
                         val currentUser = hashMapOf(
@@ -60,23 +58,25 @@ class RegistrationFragment : Fragment() {
                             "password" to password,
                             "userID" to user?.uid
                         )
+                        viewModel.preferencesEditor?.putString("EMAIL_ID", userName)
+                        viewModel.preferencesEditor?.putBoolean("IS_LOGGEDIN", true)
+                        viewModel.preferencesEditor?.apply()
                         db.collection("users")
                             .add(currentUser)
                             .addOnSuccessListener {
                                 val intent = Intent(activity!!, MainActivity::class.java)
                                 startActivity(intent)
                             }.addOnFailureListener {
-                                Log.i("RegistrationFragment",it.message)
                             }
-                        //updateUI(user)
                     } else {
+                        viewModel.preferencesEditor?.putString("EMAIL_ID", "")
+                        viewModel.preferencesEditor?.putBoolean("IS_LOGGEDIN", false)
+                        viewModel.preferencesEditor?.apply()
                         // If sign in fails, display a message to the user.
-                        Log.w("RegistrationFragment", "signUpWithEmail:failure", task.exception)
                         Toast.makeText(
                             context, "Authentication failed.",
                             Toast.LENGTH_SHORT
                         ).show()
-                        //updateUI(null)
                     }
                 }
         }
