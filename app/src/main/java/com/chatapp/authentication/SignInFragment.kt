@@ -48,19 +48,21 @@ class SignInFragment : Fragment() {
                 .addOnCompleteListener(activity!!) { task ->
                     if (task.isSuccessful) {
                         // Sign in success, update UI with the signed-in user's information
-                        Log.d("SignInFragment", "signInWithEmail:success")
                         val user = viewModel.auth.currentUser
+                        viewModel.preferencesEditor?.putBoolean("IS_LOGGEDIN", true)
+                        viewModel.preferencesEditor?.putString("EMAIL_ID", userName)
+                        viewModel.preferencesEditor?.apply()
                         val intent = Intent(activity!!, MainActivity::class.java)
                         startActivity(intent)
-                        //updateUI(user)
                     } else {
+                        viewModel.preferencesEditor?.putBoolean("IS_LOGGEDIN", false)
+                        viewModel.preferencesEditor?.putString("EMAIL_ID", "")
+                        viewModel.preferencesEditor?.apply()
                         // If sign in fails, display a message to the user.
-                        Log.w("SignInFragment", "signInWithEmail:failure", task.exception)
                         Toast.makeText(
                             context, "Authentication failed.",
                             Toast.LENGTH_SHORT
                         ).show()
-                        //updateUI(null)
                     }
                 }
         }

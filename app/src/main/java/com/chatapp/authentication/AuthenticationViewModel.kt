@@ -1,12 +1,17 @@
 package com.chatapp.authentication
 
-import androidx.lifecycle.AndroidViewModel
+import android.content.SharedPreferences
 import androidx.lifecycle.ViewModel
 import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseAuth
 
+
 class AuthenticationViewModel: ViewModel() {
+
+    val sharedPrefFile = "com..chatapp"
+    var mPreferences: SharedPreferences? = null
+    var preferencesEditor: SharedPreferences.Editor? = null
 
     lateinit var auth: FirebaseAuth
 
