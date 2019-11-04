@@ -40,29 +40,29 @@
 
     </com.google.android.material.textfield.TextInputLayout>
 
-    <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/txtInputNickName"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Nick name"
-            android:textColorHint="#000000"
-            app:errorEnabled="true"
-            app:hintEnabled="true"
-            style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.Dense">
+<!--    <com.google.android.material.textfield.TextInputLayout-->
+<!--            android:id="@+id/txtInputNickName"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:hint="Nick name"-->
+<!--            android:textColorHint="#000000"-->
+<!--            app:errorEnabled="true"-->
+<!--            app:hintEnabled="true"-->
+<!--            style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.Dense">-->
 
-        <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/edtNickName"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="phone"
-                android:maxLines="1"
-                android:textSize="14sp"
-                android:textColor="#000000"
-                android:fontFamily="@font/open_sans"
-                android:drawablePadding="8dp"
-                android:imeOptions="actionNext"/>
+<!--        <com.google.android.material.textfield.TextInputEditText-->
+<!--                android:id="@+id/edtNickName"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:inputType="phone"-->
+<!--                android:maxLines="1"-->
+<!--                android:textSize="14sp"-->
+<!--                android:textColor="#000000"-->
+<!--                android:fontFamily="@font/open_sans"-->
+<!--                android:drawablePadding="8dp"-->
+<!--                android:imeOptions="actionNext"/>-->
 
-    </com.google.android.material.textfield.TextInputLayout>
+<!--    </com.google.android.material.textfield.TextInputLayout>-->
 
     <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/txtInputPassword"

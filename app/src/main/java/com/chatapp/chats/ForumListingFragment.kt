@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.chatapp.ForumRecyclerAdapter
 import com.chatapp.R
+import com.chatapp.chats.chatbot.ChatBotFragment
 import kotlinx.android.synthetic.main.forum_listing_layout.*
 
 class ForumListingFragment : Fragment() {
@@ -18,8 +19,8 @@ class ForumListingFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        fab.setOnClickListener { fab ->
-            activity?.supportFragmentManager?.beginTransaction()?.replace(R.id.container, ForumCreationFragment())
+        fab.setOnClickListener {
+            activity?.supportFragmentManager?.beginTransaction()?.replace(R.id.container, ChatBotFragment())
                 ?.addToBackStack(null)
                 ?.commit()
         }

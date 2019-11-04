@@ -40,7 +40,7 @@ class RegistrationFragment : Fragment() {
 
         btnSignUp.setOnClickListener {
             val userName = edtUserName.text.toString()
-            val nickname = edtNickName.text.toString()
+//            val nickname = edtNickName.text.toString()
             val password = edtPassword.text.toString()
 
             if(TextUtils.isEmpty(userName) || TextUtils.isEmpty(password)){
