@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment
 import com.chatapp.ForumRecyclerAdapter
 import com.chatapp.R
 import com.chatapp.chats.models.ForumModel
+import com.chatapp.utils.toSimpleString
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.forum_listing_layout.*
 
@@ -35,16 +36,18 @@ class ForumListingFragment : Fragment() {
             if(result.documents.size > 0) {
                 val forums = ArrayList<ForumModel>()
                 for (document in result.documents) {
-                    forums.add(document.toObject(ForumModel::class.java)!!)
+                    val forumModel = document.toObject(ForumModel::class.java)!!
+                    forumModel.formattedDate = toSimpleString(forumModel.creationTime)
+                    forums.add(forumModel)
                 }
                 adapter.addForums(forums)
             }
         }.addOnCanceledListener {
         }
-        fab.setOnClickListener { fab ->
-            activity?.supportFragmentManager?.beginTransaction()?.replace(R.id.container, ForumCreationFragment())
-                ?.addToBackStack(null)
-                ?.commit()
-        }
+//        fab.setOnClickListener { fab ->
+//            activity?.supportFragmentManager?.beginTransaction()?.replace(R.id.container, ForumCreationFragment())
+//                ?.addToBackStack(null)
+//                ?.commit()
+//        }
     }
 }

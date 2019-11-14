@@ -5,6 +5,7 @@ import androidx.lifecycle.ViewModel
 import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseAuth
+import com.mongodb.stitch.android.core.StitchAppClient
 
 
 class AuthenticationViewModel: ViewModel() {
@@ -14,6 +15,7 @@ class AuthenticationViewModel: ViewModel() {
     var preferencesEditor: SharedPreferences.Editor? = null
 
     lateinit var auth: FirebaseAuth
+    lateinit var client: StitchAppClient
 
     fun setFirebaseAuth(auth: FirebaseAuth){
         this.auth = auth

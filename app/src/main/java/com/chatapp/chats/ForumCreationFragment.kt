@@ -7,15 +7,19 @@ import android.text.TextUtils
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
 import android.widget.Toast
+import androidx.core.view.get
 import androidx.fragment.app.Fragment
 import com.chatapp.R
 import com.chatapp.chats.models.ForumModel
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.forum_creation_layout.*
 
-class ForumCreationFragment : Fragment() {
+class ForumCreationFragment : Fragment(), AdapterView.OnItemSelectedListener {
 
+    var selectedTopic: String = ""
     val sharedPrefFile = "com..chatapp"
     var mPreferences: SharedPreferences? = null
     var preferencesEditor: SharedPreferences.Editor? = null
@@ -34,6 +38,19 @@ class ForumCreationFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        // Create an ArrayAdapter using the string array and a default spinner layout
+        val adapter = ArrayAdapter.createFromResource(
+                context!!,
+                R.array.topic_suggestion,
+                android.R.layout.simple_spinner_item
+        ).also { adapter ->
+            // Specify the layout to use when the list of choices appears
+            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+            // Apply the adapter to the spinner
+            spinnerSuggestion.adapter = adapter
+        }
+        spinnerSuggestion.onItemSelectedListener = this
+
         btnCreateForum.setOnClickListener {
             btnCreateForum.setOnClickListener {
                 createForum()
@@ -42,12 +59,16 @@ class ForumCreationFragment : Fragment() {
     }
 
     private fun createForum() {
-
         val forumName = edtForum.text.toString()
         val forumDescription = edtDescription.text.toString()
 
         if (TextUtils.isEmpty(forumName)) {
             Toast.makeText(context, "Please enter forum name", Toast.LENGTH_LONG).show()
+            return
+        }
+
+        if (TextUtils.isEmpty(selectedTopic)) {
+            Toast.makeText(context, "Please select the topic", Toast.LENGTH_LONG).show()
             return
         }
 
@@ -60,6 +81,7 @@ class ForumCreationFragment : Fragment() {
         forumModel.forumName = forumName
         forumModel.description = forumDescription
         forumModel.createrName = mPreferences?.getString("EMAIL_ID", "")!!
+        forumModel.forumTopic = selectedTopic
         forumModel.creationTime = System.currentTimeMillis()
 
         db.collection("forums")
@@ -71,5 +93,13 @@ class ForumCreationFragment : Fragment() {
                 .addOnFailureListener { e ->
                     Toast.makeText(context, "Something went wrong while creating forum!", Toast.LENGTH_LONG).show()
                 }
+    }
+
+    override fun onNothingSelected(parent: AdapterView<*>?) {
+
+    }
+
+    override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+        selectedTopic = parent?.getItemAtPosition(position) as String
     }
 }

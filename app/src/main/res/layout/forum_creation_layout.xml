@@ -2,7 +2,8 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:padding="16dp">
 
     <Button
         android:id="@+id/btnCreateForum"
@@ -12,9 +13,28 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        android:layout_marginBottom="16dp"
         android:textColor="#FFFFFF"
         android:background="@color/colorAccent"/>
+
+    <TextView
+        android:id="@+id/lblSuggestedTopics"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Recommended topics:"
+        app:layout_constraintTop_toBottomOf="@id/divider1"
+        android:textColor="@android:color/black"
+        android:fontFamily="@font/open_sans"
+        android:layout_marginTop="16dp"
+        app:layout_constraintLeft_toLeftOf="parent" />
+
+    <Spinner
+        android:id="@+id/spinnerSuggestion"
+        app:layout_constraintTop_toBottomOf="@id/lblSuggestedTopics"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_width="0dp"
+        android:layout_marginTop="16dp"
+        android:layout_height="wrap_content"/>
 
     <EditText
         android:id="@+id/edtForum"
@@ -25,9 +45,6 @@
         android:textColorHint="#b4b4b4"
         android:background="@null"
         android:padding="4dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginRight="16dp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -56,7 +73,7 @@
         android:padding="8dp"
         app:layout_constraintLeft_toLeftOf="@id/edtForum"
         app:layout_constraintRight_toRightOf="@id/edtForum"
-        app:layout_constraintTop_toBottomOf="@id/divider1"
+        app:layout_constraintTop_toBottomOf="@id/spinnerSuggestion"
         app:layout_constraintBottom_toTopOf="@id/btnCreateForum"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

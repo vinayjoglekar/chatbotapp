@@ -4,4 +4,20 @@
     <string name="if_you_have_an_account_login">If you have an account.. <u><b>Login</b></u></string>
     <string name="don_t_have_an_account_sign_up">Don\'t have an account? <u><b>Sign Up</b></u></string>
     <string name="log_out">Log out</string>
+
+    <string-array name="topic_suggestion">
+        <item>Social</item>
+        <item>Music and Videos</item>
+        <item>Travel</item>
+        <item>Gaming</item>
+        <item>Shopping</item>
+        <item>Photography</item>
+        <item>Financial</item>
+        <item>Reading</item>
+        <item>Education</item>
+        <item>Sports &amp; Health</item>
+        <item>Other</item>
+    </string-array>
+
+    <string name="mongo_cluster_id">chatapp-txfkl</string>
 </resources>

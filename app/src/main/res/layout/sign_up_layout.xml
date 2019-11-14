@@ -5,7 +5,7 @@
               android:layout_width="match_parent"
               android:layout_height="match_parent"
               android:padding="16dp"
-              android:background="#E5E7E9">
+              android:background="@android:color/white">
 
     <ImageView
             android:id="@+id/imgChat"
@@ -13,7 +13,7 @@
             android:layout_height="100dp"
             android:layout_marginTop="50dp"
             android:layout_gravity="center"
-            app:srcCompat="@drawable/ic_chat"/>
+            app:srcCompat="@drawable/tata_logo"/>
 
     <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/txtInputUserName"
@@ -99,7 +99,7 @@
             android:paddingStart="30dp"
             android:textColor="#FFFFFF"
             android:paddingEnd="30dp"
-            android:background="#5DADE2"
+            android:background="@color/colorPrimaryDark"
             android:fontFamily="@font/open_sans_bold"
             android:layout_marginTop="16dp"
             android:layout_gravity="center"/>

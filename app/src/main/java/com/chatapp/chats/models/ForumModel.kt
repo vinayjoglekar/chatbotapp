@@ -4,7 +4,7 @@ import androidx.databinding.BaseObservable
 import androidx.databinding.Bindable
 import com.chatapp.BR
 
-class ForumModel: BaseObservable() {
+class ForumModel : BaseObservable() {
 
     var id: Int = 0
 
@@ -27,6 +27,20 @@ class ForumModel: BaseObservable() {
         set(value) {
             field = value
             notifyPropertyChanged(BR.creationTime)
+        }
+
+    @get:Bindable
+    var forumTopic: String = "Others"
+        set(value) {
+            field = value
+            notifyPropertyChanged(BR.forumTopic)
+        }
+
+    @get:Bindable
+    var formattedDate: String? = ""
+        set(value) {
+            field = value
+            notifyPropertyChanged(BR.formattedDate)
         }
 
     @get:Bindable
