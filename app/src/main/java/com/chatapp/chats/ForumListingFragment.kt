@@ -1,5 +1,6 @@
 package com.chatapp.chats
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -9,11 +10,12 @@ import androidx.fragment.app.Fragment
 import com.chatapp.ForumRecyclerAdapter
 import com.chatapp.R
 import com.chatapp.chats.models.ForumModel
+import com.chatapp.utils.RecyclerClickListener
 import com.chatapp.utils.toSimpleString
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.forum_listing_layout.*
 
-class ForumListingFragment : Fragment() {
+class ForumListingFragment : Fragment(), RecyclerClickListener {
 
     val db = FirebaseFirestore.getInstance()
     lateinit var adapter: ForumRecyclerAdapter
@@ -31,6 +33,7 @@ class ForumListingFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         recyclerForums.adapter = adapter
+        adapter.addOnClickListener(this)
 
         db.collection("forums").get().addOnSuccessListener { result ->
             if(result.documents.size > 0) {
@@ -44,10 +47,11 @@ class ForumListingFragment : Fragment() {
             }
         }.addOnCanceledListener {
         }
-//        fab.setOnClickListener { fab ->
-//            activity?.supportFragmentManager?.beginTransaction()?.replace(R.id.container, ForumCreationFragment())
-//                ?.addToBackStack(null)
-//                ?.commit()
-//        }
+    }
+
+    override fun onRowClicked(model: ForumModel) {
+        val intent = Intent(activity, ChatActivity::class.java)
+        intent.putExtra("ForumModel", model)
+        activity?.startActivity(intent)
     }
 }

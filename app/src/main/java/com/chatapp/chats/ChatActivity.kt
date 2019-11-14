@@ -18,46 +18,23 @@ class ChatActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.chat_screen_layout)
-        //forumModel = intent.getSerializableExtra("ForumModel") as ForumModel
+        forumModel = intent.getSerializableExtra("ForumModel") as ForumModel
         collapsingToolbar.setExpandedTitleColor(ContextCompat.getColor(this, android.R.color.transparent))
-        //collapsingToolbar.setTitle(forumModel.createrName);
+        collapsingToolbar.setTitle(forumModel.forumName)
         collapsingToolbar.setCollapsedTitleTextColor(Color.rgb(255, 255, 255));
 
         adapter = ChatRecyclerAdapter(getChatList())
         recyclerChat.layoutManager = LinearLayoutManager(this)
         recyclerChat.adapter = adapter
+
+        tvForumTitle.text = forumModel.forumName
+        tvForumDescription.text = forumModel.description
+        tvCreator.text = "${forumModel.createrName} , ${forumModel.formattedDate}"
+        tvForumType.text = forumModel.forumTopic
     }
 
     fun getChatList(): ArrayList<CommentModel> {
         val messages = ArrayList<CommentModel>()
-        val message1 = CommentModel()
-        message1.memberName = "Vinay"
-        message1.messageBody = "Hi, How are you all?"
-        message1.isMessageByCurrentUser = false
-        message1.timeCreated = "11:51 am"
-
-        val message2 = CommentModel()
-        message2.memberName = "Manjot"
-        message2.messageBody = "Manjot this side"
-        message2.isMessageByCurrentUser = false
-        message2.timeCreated = "11:52 am"
-
-        val message3 = CommentModel()
-        message3.memberName = "Kunal Jadhav"
-        message3.messageBody = "I prefer AC train"
-        message3.isMessageByCurrentUser = false
-        message3.timeCreated = "11:54 am"
-
-        val message4 = CommentModel()
-        message4.memberName = "Kunal Sale"
-        message4.messageBody = "Hello everyone"
-        message4.isMessageByCurrentUser = true
-        message4.timeCreated = "11:55 am"
-
-        messages.add(message1)
-        messages.add(message2)
-        messages.add(message4)
-        messages.add(message3)
         return messages
     }
 }

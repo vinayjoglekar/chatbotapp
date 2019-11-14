@@ -7,10 +7,16 @@ import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.chatapp.chats.models.ForumModel
 import com.chatapp.databinding.ChatForumsLayoutBinding
+import com.chatapp.utils.RecyclerClickListener
 
 class ForumRecyclerAdapter : RecyclerView.Adapter<ForumRecyclerAdapter.ForumViewHolder>() {
 
     var forumList: ArrayList<ForumModel> = ArrayList()
+    lateinit var onClickListener: RecyclerClickListener
+
+    fun addOnClickListener(clickListener: RecyclerClickListener){
+        onClickListener = clickListener
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ForumViewHolder {
         val binding: ChatForumsLayoutBinding = DataBindingUtil.inflate(LayoutInflater.from(parent.context),R.layout.chat_forums_layout, parent, false)
@@ -26,10 +32,12 @@ class ForumRecyclerAdapter : RecyclerView.Adapter<ForumRecyclerAdapter.ForumView
     override fun getItemCount(): Int = forumList.size
 
     override fun onBindViewHolder(holder: ForumViewHolder, position: Int) {
-        holder.binding.model = forumList[holder.adapterPosition]
+        val model = forumList[holder.adapterPosition]
+        holder.binding.model = model
+        holder.binding.root.setOnClickListener {
+            onClickListener.onRowClicked(model)
+        }
     }
 
-    class ForumViewHolder(val binding: ChatForumsLayoutBinding) : RecyclerView.ViewHolder(binding.root){
-
-    }
+    class ForumViewHolder(val binding: ChatForumsLayoutBinding) : RecyclerView.ViewHolder(binding.root)
 }

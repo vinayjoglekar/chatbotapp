@@ -8,7 +8,6 @@ import androidx.appcompat.app.AppCompatActivity
 import com.chatapp.authentication.UserAuthenticationActivity
 import com.chatapp.chats.ForumCreationFragment
 import com.chatapp.chats.ForumListingFragment
-import com.chatapp.chats.MessageModel
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_main.*
 
