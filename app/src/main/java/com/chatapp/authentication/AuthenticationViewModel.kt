@@ -14,6 +14,7 @@ class AuthenticationViewModel: ViewModel() {
     var preferencesEditor: SharedPreferences.Editor? = null
 
     lateinit var auth: FirebaseAuth
+//    lateinit var client: StitchAppClient
 
     fun setFirebaseAuth(auth: FirebaseAuth){
         this.auth = auth

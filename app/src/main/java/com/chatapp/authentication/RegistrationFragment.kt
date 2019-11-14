@@ -3,7 +3,6 @@ package com.chatapp.authentication
 import android.content.Intent
 import android.os.Bundle
 import android.text.TextUtils
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -14,6 +13,7 @@ import com.chatapp.MainActivity
 import com.chatapp.R
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.sign_up_layout.*
+
 
 class RegistrationFragment : Fragment() {
 
@@ -26,7 +26,11 @@ class RegistrationFragment : Fragment() {
         viewModel = ViewModelProviders.of(activity!!).get(AuthenticationViewModel::class.java)
     }
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
         super.onCreateView(inflater, container, savedInstanceState)
         return inflater.inflate(R.layout.sign_up_layout, container, false)
     }
@@ -34,7 +38,8 @@ class RegistrationFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         lblLogin.setOnClickListener {
-            activity?.supportFragmentManager?.beginTransaction()?.replace(R.id.container, SignInFragment())?.commit()
+            activity?.supportFragmentManager?.beginTransaction()
+                ?.replace(R.id.container, SignInFragment())?.commit()
         }
 
         btnSignUp.setOnClickListener {
@@ -42,10 +47,24 @@ class RegistrationFragment : Fragment() {
 //            val nickname = edtNickName.text.toString()
             val password = edtPassword.text.toString()
 
-            if(TextUtils.isEmpty(userName) || TextUtils.isEmpty(password)){
-                Toast.makeText(context, "Please enter the details",Toast.LENGTH_LONG).show()
+            if (TextUtils.isEmpty(userName) || TextUtils.isEmpty(password)) {
+                Toast.makeText(context, "Please enter the details", Toast.LENGTH_LONG).show()
                 return@setOnClickListener
             }
+
+//            val emailPassClient = viewModel.client.auth.getProviderClient(
+//                    UserPasswordAuthProviderClient.factory
+//            )
+//            emailPassClient.registerWithEmail(userName,password)
+//                    .addOnCompleteListener(object : OnCompleteListener<Void> {
+//                        override fun onComplete(task: Task<Void>) {
+//                            if (task.isSuccessful()) {
+//                                Log.d("stitch", "Successfully sent account confirmation email");
+//                            } else {
+//                                Log.e("stitch", "Error registering new user:", task.getException());
+//                            }
+//                        }
+//                    })
 
             viewModel.signUp(userName, password)
                 .addOnCompleteListener(activity!!) { task ->

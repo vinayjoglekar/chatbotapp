@@ -6,8 +6,9 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.chatapp.R
+import com.chatapp.chats.models.CommentModel
 
-class ChatRecyclerAdapter(val messageList: ArrayList<MessageModel>): RecyclerView.Adapter<RecyclerView.ViewHolder>(){
+class ChatRecyclerAdapter(val messageList: ArrayList<CommentModel>): RecyclerView.Adapter<RecyclerView.ViewHolder>(){
 
     val SENDER_TYPE = 0
     val RECEIVER_TYPE = 1
