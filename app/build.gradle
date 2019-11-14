@@ -11,7 +11,7 @@ android {
     buildToolsVersion "29.0.2"
     defaultConfig {
         applicationId "com.chatapp"
-        minSdkVersion 26
+        minSdkVersion 21
         targetSdkVersion 29
         versionCode 1
         versionName "1.0"
@@ -42,13 +42,6 @@ android {
         targetCompatibility JavaVersion.VERSION_1_8
     }
 
-    configurations {
-        implementation.exclude module:'proto-google-common-protos'
-        implementation.exclude module:'protolite-well-known-types'
-        implementation.exclude module:'protobuf-lite'
-    }
-
-
     dataBinding {
         enabled = true
     }
@@ -72,10 +65,6 @@ dependencies {
     implementation 'com.google.firebase:firebase-firestore:21.2.1'
     implementation 'androidx.multidex:multidex:2.0.1'
     kapt 'com.android.databinding:compiler:3.2.0-alpha10'
-
-    implementation 'com.google.cloud:google-cloud-dialogflow:0.116.0-alpha'
-    implementation 'io.grpc:grpc-okhttp:1.21.1'
-
 }
 
 apply plugin: 'com.google.gms.google-services'  // Google Play services Gradle plugin

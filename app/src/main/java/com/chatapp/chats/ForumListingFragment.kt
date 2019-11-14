@@ -1,14 +1,12 @@
 package com.chatapp.chats
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.chatapp.ForumRecyclerAdapter
 import com.chatapp.R
-import com.chatapp.chats.chatbot.ChatBotFragment
 import com.chatapp.chats.models.ForumModel
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.forum_listing_layout.*
@@ -43,9 +41,11 @@ class ForumListingFragment : Fragment() {
         }.addOnCanceledListener {
         }
         fab.setOnClickListener {
-            activity?.supportFragmentManager?.beginTransaction()?.replace(R.id.container, ChatBotFragment())
-                ?.addToBackStack(null)
-                ?.commit()
+//            activity?.supportFragmentManager?.beginTransaction()?.replace(R.id.container, ChatBotFragment())
+//                ?.addToBackStack(null)
+//                ?.commit()
+            startActivity(context?.packageManager?.getLaunchIntentForPackage("com.tcp.dialogflowchat"))
+
         }
     }
 }
