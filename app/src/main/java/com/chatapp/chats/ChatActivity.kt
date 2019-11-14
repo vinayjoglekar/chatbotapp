@@ -24,8 +24,8 @@ class ChatActivity : AppCompatActivity() {
         collapsingToolbar.setCollapsedTitleTextColor(Color.rgb(255, 255, 255));
 
         adapter = ChatRecyclerAdapter(getChatList())
-        recyclerChat.layoutManager = LinearLayoutManager(this)
-        recyclerChat.adapter = adapter
+//        recyclerChat.layoutManager = LinearLayoutManager(this)
+//        recyclerChat.adapter = adapter
 
         tvForumTitle.text = forumModel.forumName
         tvForumDescription.text = forumModel.description

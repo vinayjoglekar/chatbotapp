@@ -45,7 +45,7 @@
         style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.Dense"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Enter Password"
+        android:hint="@string/enter_password"
         android:textColorHint="#000000"
         app:errorEnabled="true"
         app:hintEnabled="true"
