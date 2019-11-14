@@ -52,20 +52,6 @@ class RegistrationFragment : Fragment() {
                 return@setOnClickListener
             }
 
-//            val emailPassClient = viewModel.client.auth.getProviderClient(
-//                    UserPasswordAuthProviderClient.factory
-//            )
-//            emailPassClient.registerWithEmail(userName,password)
-//                    .addOnCompleteListener(object : OnCompleteListener<Void> {
-//                        override fun onComplete(task: Task<Void>) {
-//                            if (task.isSuccessful()) {
-//                                Log.d("stitch", "Successfully sent account confirmation email");
-//                            } else {
-//                                Log.e("stitch", "Error registering new user:", task.getException());
-//                            }
-//                        }
-//                    })
-
             viewModel.signUp(userName, password)
                 .addOnCompleteListener(activity!!) { task ->
                     if (task.isSuccessful) {

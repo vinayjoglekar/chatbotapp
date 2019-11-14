@@ -6,16 +6,17 @@
     <string name="log_out">Log out</string>
 
     <string-array name="topic_suggestion">
+        <item>Tech</item>
         <item>Social</item>
-        <item>Music and Videos</item>
+        <item>Music</item>
         <item>Travel</item>
         <item>Gaming</item>
-        <item>Shopping</item>
-        <item>Photography</item>
-        <item>Financial</item>
+        <item>Shop</item>
+        <item>Finance</item>
         <item>Reading</item>
-        <item>Education</item>
-        <item>Sports &amp; Health</item>
+        <item>Study</item>
+        <item>Sports</item>
+        <item>Health</item>
         <item>Other</item>
     </string-array>
 

@@ -3,8 +3,9 @@ package com.chatapp.chats.models
 import androidx.databinding.BaseObservable
 import androidx.databinding.Bindable
 import com.chatapp.BR
+import java.io.Serializable
 
-class ForumModel : BaseObservable() {
+class ForumModel : BaseObservable(), Serializable {
 
     var id: Int = 0
 
