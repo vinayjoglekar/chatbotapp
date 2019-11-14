@@ -10,7 +10,6 @@ import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Toast
-import androidx.core.view.get
 import androidx.fragment.app.Fragment
 import com.chatapp.R
 import com.chatapp.chats.models.ForumModel
@@ -56,6 +55,7 @@ class ForumCreationFragment : Fragment(), AdapterView.OnItemSelectedListener {
         spinnerSuggestion.onItemSelectedListener = this
 
         btnCreateForum.setOnClickListener {
+            showProgressbar()
             createForum()
         }
     }
@@ -91,6 +91,7 @@ class ForumCreationFragment : Fragment(), AdapterView.OnItemSelectedListener {
             .addOnSuccessListener {
                 Toast.makeText(context, "Forum created", Toast.LENGTH_LONG).show()
                 activity?.supportFragmentManager?.popBackStack()
+                hideProgressbar()
             }
             .addOnFailureListener { e ->
                 Toast.makeText(
@@ -98,6 +99,7 @@ class ForumCreationFragment : Fragment(), AdapterView.OnItemSelectedListener {
                     "Something went wrong while creating forum!",
                     Toast.LENGTH_LONG
                 ).show()
+                hideProgressbar()
             }
     }
 
@@ -107,5 +109,17 @@ class ForumCreationFragment : Fragment(), AdapterView.OnItemSelectedListener {
 
     override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
         selectedTopic = parent?.getItemAtPosition(position) as String
+    }
+
+    fun showProgressbar(){
+        if(progressbar != null){
+            progressbar.visibility = View.VISIBLE
+        }
+    }
+
+    fun hideProgressbar(){
+        if(progressbar != null){
+            progressbar.visibility = View.GONE
+        }
     }
 }

@@ -34,6 +34,7 @@ class ForumListingFragment : Fragment(), RecyclerClickListener {
         recyclerForums.adapter = adapter
         adapter.addOnClickListener(this)
 
+        showProgressbar()
         db.collection("forums").get().addOnSuccessListener { result ->
             if(result.documents.size > 0) {
                 val forums = ArrayList<ForumModel>()
@@ -43,8 +44,10 @@ class ForumListingFragment : Fragment(), RecyclerClickListener {
                     forums.add(forumModel)
                 }
                 adapter.addForums(forums)
+                hideProgressbar()
             }
         }.addOnCanceledListener {
+            hideProgressbar()
         }
         fab.setOnClickListener {
 //            activity?.supportFragmentManager?.beginTransaction()?.replace(R.id.container, ChatBotFragment())
@@ -59,5 +62,17 @@ class ForumListingFragment : Fragment(), RecyclerClickListener {
         val intent = Intent(activity, ChatActivity::class.java)
         intent.putExtra("ForumModel", model)
         activity?.startActivity(intent)
+    }
+
+    fun showProgressbar(){
+        if(progressbar != null){
+            progressbar.visibility = View.VISIBLE
+        }
+    }
+
+    fun hideProgressbar(){
+        if(progressbar != null){
+            progressbar.visibility = View.GONE
+        }
     }
 }
