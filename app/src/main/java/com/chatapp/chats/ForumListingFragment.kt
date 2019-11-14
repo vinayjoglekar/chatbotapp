@@ -2,7 +2,6 @@ package com.chatapp.chats
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -46,6 +45,13 @@ class ForumListingFragment : Fragment(), RecyclerClickListener {
                 adapter.addForums(forums)
             }
         }.addOnCanceledListener {
+        }
+        fab.setOnClickListener {
+//            activity?.supportFragmentManager?.beginTransaction()?.replace(R.id.container, ChatBotFragment())
+//                ?.addToBackStack(null)
+//                ?.commit()
+            startActivity(context?.packageManager?.getLaunchIntentForPackage("com.tcp.dialogflowchat"))
+
         }
     }
 

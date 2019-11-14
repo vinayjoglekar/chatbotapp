@@ -31,7 +31,11 @@ class ForumCreationFragment : Fragment(), AdapterView.OnItemSelectedListener {
         preferencesEditor = mPreferences!!.edit()
     }
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
         super.onCreateView(inflater, container, savedInstanceState)
         return inflater.inflate(R.layout.forum_creation_layout, container, false)
     }
@@ -40,9 +44,9 @@ class ForumCreationFragment : Fragment(), AdapterView.OnItemSelectedListener {
         super.onViewCreated(view, savedInstanceState)
         // Create an ArrayAdapter using the string array and a default spinner layout
         val adapter = ArrayAdapter.createFromResource(
-                context!!,
-                R.array.topic_suggestion,
-                android.R.layout.simple_spinner_item
+            context!!,
+            R.array.topic_suggestion,
+            android.R.layout.simple_spinner_item
         ).also { adapter ->
             // Specify the layout to use when the list of choices appears
             adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
@@ -52,9 +56,7 @@ class ForumCreationFragment : Fragment(), AdapterView.OnItemSelectedListener {
         spinnerSuggestion.onItemSelectedListener = this
 
         btnCreateForum.setOnClickListener {
-            btnCreateForum.setOnClickListener {
-                createForum()
-            }
+            createForum()
         }
     }
 
@@ -85,14 +87,18 @@ class ForumCreationFragment : Fragment(), AdapterView.OnItemSelectedListener {
         forumModel.creationTime = System.currentTimeMillis()
 
         db.collection("forums")
-                .add(forumModel)
-                .addOnSuccessListener { documentReference ->
-                    Toast.makeText(context, "Forum created", Toast.LENGTH_LONG).show()
-                    activity?.supportFragmentManager?.popBackStack()
-                }
-                .addOnFailureListener { e ->
-                    Toast.makeText(context, "Something went wrong while creating forum!", Toast.LENGTH_LONG).show()
-                }
+            .add(forumModel)
+            .addOnSuccessListener {
+                Toast.makeText(context, "Forum created", Toast.LENGTH_LONG).show()
+                activity?.supportFragmentManager?.popBackStack()
+            }
+            .addOnFailureListener { e ->
+                Toast.makeText(
+                    context,
+                    "Something went wrong while creating forum!",
+                    Toast.LENGTH_LONG
+                ).show()
+            }
     }
 
     override fun onNothingSelected(parent: AdapterView<*>?) {

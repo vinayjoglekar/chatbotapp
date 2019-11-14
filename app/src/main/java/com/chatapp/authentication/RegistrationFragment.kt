@@ -26,7 +26,11 @@ class RegistrationFragment : Fragment() {
         viewModel = ViewModelProviders.of(activity!!).get(AuthenticationViewModel::class.java)
     }
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
         super.onCreateView(inflater, container, savedInstanceState)
         return inflater.inflate(R.layout.sign_up_layout, container, false)
     }
@@ -34,11 +38,13 @@ class RegistrationFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         lblLogin.setOnClickListener {
-            activity?.supportFragmentManager?.beginTransaction()?.replace(R.id.container, SignInFragment())?.commit()
+            activity?.supportFragmentManager?.beginTransaction()
+                ?.replace(R.id.container, SignInFragment())?.commit()
         }
 
         btnSignUp.setOnClickListener {
             val userName = edtUserName.text.toString()
+//            val nickname = edtNickName.text.toString()
             val password = edtPassword.text.toString()
 
             if (TextUtils.isEmpty(userName) || TextUtils.isEmpty(password)) {
