@@ -19,9 +19,9 @@ class ChatActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.chat_screen_layout)
         forumModel = intent.getSerializableExtra("ForumModel") as ForumModel
-        collapsingToolbar.setExpandedTitleColor(ContextCompat.getColor(this, android.R.color.transparent))
-        collapsingToolbar.setTitle(forumModel.forumName)
-        collapsingToolbar.setCollapsedTitleTextColor(Color.rgb(255, 255, 255));
+//        collapsingToolbar.setExpandedTitleColor(ContextCompat.getColor(this, android.R.color.transparent))
+//        collapsingToolbar.setTitle(forumModel.forumName)
+//        collapsingToolbar.setCollapsedTitleTextColor(Color.rgb(255, 255, 255));
 
         adapter = ChatRecyclerAdapter(getChatList())
 //        recyclerChat.layoutManager = LinearLayoutManager(this)
@@ -31,6 +31,12 @@ class ChatActivity : AppCompatActivity() {
         tvForumDescription.text = forumModel.description
         tvCreator.text = "${forumModel.createrName} , ${forumModel.formattedDate}"
         tvForumType.text = forumModel.forumTopic
+
+        imgBack.setOnClickListener {
+            finish()
+        }
+
+        toolbarTitle.text = forumModel.forumName
     }
 
     fun getChatList(): ArrayList<CommentModel> {
